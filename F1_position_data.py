@@ -4,7 +4,7 @@ import fastf1
 import pandas as pd
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
-fastf1.Cache.enable_cache('cache')
+fastf1.Cache.enable_cache('Formula-1-Driver-On-Track-Location/cache')
 
 # Pick year
 invalid = True
