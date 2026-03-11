@@ -43,10 +43,6 @@ def draw_dot(u,x,screen,color,xlist,ylist,throttle,brake,Gears,Speed,driver,ycor
 
         draw_text(f"Driver : {driver}", text_font, color, 950, ycord-50,screen)
 
-# Calcuate disacne between dots
-def distance(p1, p2):
-    return math.hypot(p1[0]-p2[0], p1[1]-p2[1])
-
 # Create telementary graph
 def plot_speed(driver_1,driver_2):
     # Enable Matplotlib patches for plotting timedelta values and load

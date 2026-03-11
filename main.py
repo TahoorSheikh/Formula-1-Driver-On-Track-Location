@@ -49,14 +49,6 @@ k = 0
 text_font = pygame.font.SysFont('Arial', 30)
 text_font_2 = pygame.font.SysFont('Arial', 15)
 
-# Initalize variables required if session type is race
-if F1.type == 'R':
-    current_lap = 1
-    crossed = False
-    message = ""
-    race_control_msg_done = False
-    flag = ""
-
 # get postion of starting line
 Start_pos = (x_list_track[0][0]+50.0,y_list_track[0][0]+50.0)
 
@@ -89,40 +81,6 @@ while running:
     if k >= len(x2):
         Fp.draw_text(driver_2, text_font, (255, 255, 0), 950, 650, screen)
         Fp.draw_text(str(lap_time_2).strip('0 days :'), text_font, (255, 255, 0), 950, 700, screen)
-
-    # Display Race control messages if session type is race
-    if F1.type == 'R':
-        # get current car postion
-        car_pos = (x_list[i][0]+50, y_list[i][0]+50)
-        
-        # Check if car is very close to start dot
-        if Fp.distance(car_pos, Start_pos) < 10:   
-            if not crossed:  
-                current_lap += 1
-                crossed = True
-                race_control_msg_done = False
-        else:
-            crossed = False 
-
-        # make sure race message is only displayed once
-        if not race_control_msg_done:
-            message = ""
-            flag = ""
-            for a in range(len(F1.race_messages)):
-                if (F1.race_messages.iloc[a][2] == current_lap):
-                    message += f"{F1.race_messages.iloc[a][0]}---"
-                    flag += f"{F1.race_messages.iloc[a][1]}-"
-        
-            race_control_msg_done = True
-
-        # Display race message
-        Fp.draw_text(f"{message}",text_font_2,(255,255,255),40,20, screen)
-
-        # Display current flags being waved in the current lap
-        Fp.draw_text(f"Current Flag: {flag.replace('None-','')}",text_font,(255,255,255),900,300, screen)
-
-        # Display lap number
-        Fp.draw_text(f"Lap: {current_lap}/{F1.all_laps}",text_font,(255,255,255),900,200, screen)
 
     # flip() the display to put your work on screen
     pygame.display.flip()

@@ -25,25 +25,15 @@ for i in range(len(Season)):
     print(str(Season['Location'][i]))
 track = input("Select track: ")
 
-# Pick Race or Quali
-types = ['R','Q']
-invalid = True
-while(invalid):
-    type = input("Select session type(R or Q): ")
-    if type in types:
-        invalid = False
-
-session = fastf1.get_session(Year, track, type)
+# Load session
+session = fastf1.get_session(Year, track, 'Q')
 session.load(telemetry=True, laps=True, weather=False)
 track_name = session.session_info['Meeting']['Circuit']['ShortName']
 
 # Fuction to return all data required for a specific driver
 def pick_driver(name):
-    # if race type is qualifying only return drivers fastest lap in that session
-    if type == 'Q':
-        driver = session.laps.pick_drivers(name).pick_fastest().get_telemetry()
-    else:
-        driver = session.laps.pick_drivers(name).get_telemetry()
+    # get drivers fastest lap
+    driver = session.laps.pick_drivers(name).pick_fastest().get_telemetry()
     # Position Data
     x = pd.DataFrame(driver['X'])
     y = pd.DataFrame(driver['Y'])
