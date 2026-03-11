@@ -75,7 +75,7 @@ while running:
     for j in range(len(F1.x_track)-1):
         pygame.draw.line(screen, (255, 255, 255), (x_list_track[j][0]+50.0, y_list_track[j][0]+50.0),(x_list_track[j+1][0]+50.0, y_list_track[j+1][0]+50.0),width=2)
 
-    # RENDER YOUR GAME HERE
+    # Rendering all visuals
     pygame.draw.circle(screen,(255,255,255),Start_pos,10)
     Fp.draw_dot(i,x,screen,(0, 255, 255),x_list,y_list,Throttle,Brake,Gears,Speed,driver_1,500,text_font)
     Fp.draw_dot(k,x2,screen,(255, 255, 0),x2_list,y2_list,Throttle2,Brake2,Gears2,Speed2,driver_2,750,text_font)
