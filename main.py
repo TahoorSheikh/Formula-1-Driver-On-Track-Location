@@ -89,6 +89,3 @@ while running:
     clock.tick(10)
 
 pygame.quit()
-
-Fp.plot_speed(driver_1,driver_2)
-

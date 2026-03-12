@@ -49,12 +49,8 @@ def pick_driver(name):
     Speed = list(driver['Speed'])
     return x, y, Throttle, Brake, lap_time, Gears, Speed
 
-# Return numer of laps in the session
-all_laps = session.total_laps
 # Use fastest lap of the session as coordinates to draw the track
 Track_Data = session.laps.pick_driver(session.results['Abbreviation'][0]).pick_fastest().get_telemetry()
-# return all race messages in the session
-race_messages = pd.DataFrame(session.race_control_messages).drop(['Time','Category','Status','Scope','Sector','RacingNumber'],axis=1)
 
 # Track data
 x_track = pd.DataFrame(Track_Data['X'])

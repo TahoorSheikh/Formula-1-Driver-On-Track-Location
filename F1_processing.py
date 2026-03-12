@@ -1,7 +1,5 @@
 import pygame
-import math
 import matplotlib.pyplot as plt
-import fastf1.plotting
 import F1_position_data as F1
 
 # Normalaize positional data for drivers
